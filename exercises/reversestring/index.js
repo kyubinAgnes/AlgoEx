@@ -11,3 +11,7 @@ function reverse(str) {
 }
 
 module.exports = reverse;
+
+// function reverse(str) {
+//     return str.split("").reverse().join("")
+// }
