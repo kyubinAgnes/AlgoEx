@@ -9,33 +9,15 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  const a = stringA.replace(/[^\w]/g, "").toLowerCase();
-  const b = stringB.replace(/[^\w]/g, "").toLowerCase();
-  const objectA = {};
-  const objectB = {};
+  const aCharMap = buildCharMap(stringA);
+  const bCharMap = buildCharMap(stringB);
 
-  if (a.length !== b.length) {
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
     return false;
   }
 
-  for (const char of a) {
-    if (!objectA[char]) {
-      objectA[char] = 1;
-    } else {
-      objectA[char] += 1;
-    }
-  }
-
-  for (const char of b) {
-    if (!objectB[char]) {
-      objectB[char] = 1;
-    } else {
-      objectB[char] += 1;
-    }
-  }
-
-  for (const char in objectA) {
-    if (objectA[char] !== objectB[char]) {
+  for (let char in aCharMap) {
+    if (aCharMap[char] !== bCharMap[char]) {
       return false;
     }
   }
@@ -43,4 +25,49 @@ function anagrams(stringA, stringB) {
   return true;
 }
 
+function buildCharMap(str) {
+  const charMap = {};
+
+  for (let char of str.replace(/[^\w]/g).toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+
+  return charMap;
+}
+
 module.exports = anagrams;
+
+// function anagrams(stringA, stringB) {
+//     const a = stringA.replace(/[^\w]/g, "").toLowerCase();
+//     const b = stringB.replace(/[^\w]/g, "").toLowerCase();
+//     const objectA = {};
+//     const objectB = {};
+
+//     if (a.length !== b.length) {
+//       return false;
+//     }
+
+//     for (const char of a) {
+//       if (!objectA[char]) {
+//         objectA[char] = 1;
+//       } else {
+//         objectA[char] += 1;
+//       }
+//     }
+
+//     for (const char of b) {
+//       if (!objectB[char]) {
+//         objectB[char] = 1;
+//       } else {
+//         objectB[char] += 1;
+//       }
+//     }
+
+//     for (const char in objectA) {
+//       if (objectA[char] !== objectB[char]) {
+//         return false;
+//       }
+//     }
+
+//     return true;
+//   }
