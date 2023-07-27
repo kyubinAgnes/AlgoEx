@@ -18,17 +18,32 @@
 //       '####'
 
 function steps(n) {
-  for (let i = 1; i <= n; i++) {
-    let str = "";
-    for (let j = 1; j <= n; j++) {
-      if (j <= i) {
-        str += "#";
+  for (let row = 0; row < n; row++) {
+    let stair = "";
+
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        stair += "#";
       } else {
-        str += " ";
+        stair += " ";
       }
     }
-    console.log(str);
+    console.log(stair);
   }
 }
 
 module.exports = steps;
+
+// function steps(n) {
+//     for (let i = 1; i <= n; i++) {
+//       let str = "";
+//       for (let j = 1; j <= n; j++) {
+//         if (j <= i) {
+//           str += "#";
+//         } else {
+//           str += " ";
+//         }
+//       }
+//       console.log(str);
+//     }
+//   }
