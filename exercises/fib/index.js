@@ -9,13 +9,25 @@
 //   fib(4) === 3
 
 function fib(n) {
-  const initial = [0, 1];
-  let start = 0;
-  while (initial.length < n + 1) {
-    initial.push(initial[start] + initial[start + 1]);
-    start += 1;
+  const result = [0, 1];
+
+  for (let i = 2; i <= n; i++) {
+    const a = result[i - 1];
+    const b = result[i - 2];
+
+    result.push(a + b);
   }
-  return initial[n];
+  return result[n];
 }
 
 module.exports = fib;
+
+// function fib(n) {
+//     const initial = [0, 1];
+//     let start = 0;
+//     while (initial.length < n + 1) {
+//       initial.push(initial[start] + initial[start + 1]);
+//       start += 1;
+//     }
+//     return initial[n];
+//   }
