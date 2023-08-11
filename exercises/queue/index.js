@@ -10,15 +10,15 @@
 
 class Queue {
   constructor() {
-    this.arr = [];
+    this.data = [];
   }
 
   add(value) {
-    this.arr.push(value);
+    this.data.unshift(value);
   }
 
   remove() {
-    return this.arr.shift();
+    return this.data.pop();
   }
 }
 
