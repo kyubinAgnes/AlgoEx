@@ -25,36 +25,47 @@
 const Queue = require("./queue");
 
 function weave(sourceOne, sourceTwo) {
-  const queueOne = new Queue();
-  const queueTwo = new Queue();
-
-  console.log(sourceOne, sourceTwo);
-
-  for (const i of sourceOne.data.reverse()) {
-    queueOne.add(i);
-  }
-
-  for (const i of sourceTwo.data.reverse()) {
-    queueTwo.add(i);
-  }
-  console.log(queueOne, queueTwo);
-
   const q = new Queue();
 
-  while (queueOne.peek() && queueTwo.peek()) {
-    if (queueOne.peek()) {
-      q.add(queueOne.peek());
-      queueOne.remove();
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    if (sourceOne.peek()) {
+      q.add(sourceOne.remove());
     }
 
-    if (queueTwo.peek()) {
-      q.add(queueTwo.peek());
-      queueTwo.remove();
+    if (sourceTwo.peek()) {
+      q.add(sourceTwo.remove());
     }
   }
-  console.log(q);
-
   return q;
 }
 
 module.exports = weave;
+
+// function weave(sourceOne, sourceTwo) {
+//     const queueOne = new Queue();
+//     const queueTwo = new Queue();
+
+//     for (const i of sourceOne.data.reverse()) {
+//       queueOne.add(i);
+//     }
+
+//     for (const i of sourceTwo.data.reverse()) {
+//       queueTwo.add(i);
+//     }
+
+//     const q = new Queue();
+
+//     while (queueOne.peek() && queueTwo.peek()) {
+//       if (queueOne.peek()) {
+//         q.add(queueOne.peek());
+//         queueOne.remove();
+//       }
+
+//       if (queueTwo.peek()) {
+//         q.add(queueTwo.peek());
+//         queueTwo.remove();
+//       }
+//     }
+
+//     return q;
+//   }
