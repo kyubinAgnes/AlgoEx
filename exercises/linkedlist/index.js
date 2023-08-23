@@ -60,11 +60,14 @@ class LinkedList {
   }
 
   removeLast() {
-    if (!this.head || !this.head.next) {
+    if (!this.head) {
       return null;
     }
     let previous = this.head;
     let node = this.head.next;
+    if (!this.head.next) {
+      this.head = null;
+    }
 
     while (node) {
       if (!node.next) {
@@ -74,7 +77,6 @@ class LinkedList {
       previous = node;
       node = node.next;
     }
-    console.log(previous, node);
   }
 }
 
