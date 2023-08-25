@@ -103,6 +103,10 @@ class LinkedList {
       return null;
     }
 
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
     let counter = 0;
     let previous = this.head;
     let node = this.head.next;
