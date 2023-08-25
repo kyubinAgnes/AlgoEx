@@ -107,19 +107,9 @@ class LinkedList {
       this.head = this.head.next;
       return;
     }
-    let counter = 0;
-    let previous = this.head;
-    let node = this.head.next;
-
-    while (previous) {
-      if (counter === index - 1) {
-        previous.next = node.next;
-        return;
-      }
-      counter++;
-      previous = node;
-      node = node.next;
-    }
+    const previous = this.getAt(index - 1);
+    const node = this.getAt(index);
+    previous.next = node.next;
     return null;
   }
 }
