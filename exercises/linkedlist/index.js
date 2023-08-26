@@ -99,7 +99,7 @@ class LinkedList {
   }
 
   removeAt(index) {
-    if (!this.head || !this.head.next) {
+    if (!this.head) {
       return null;
     }
 
@@ -107,10 +107,12 @@ class LinkedList {
       this.head = this.head.next;
       return;
     }
+
     const previous = this.getAt(index - 1);
-    const node = this.getAt(index);
-    previous.next = node.next;
-    return null;
+    if (!previous || !previous.next) {
+      return;
+    }
+    previous.next = previous.next.next;
   }
 }
 
