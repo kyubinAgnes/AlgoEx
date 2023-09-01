@@ -141,6 +141,24 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  // forOf() {
+  //   let node = this.head;
+  //   let counter = 0;
+  //   while (node) {
+  //     counter++;
+  //     node.data += 10;
+  //     node = node.next;
+  //   }
+  // }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
