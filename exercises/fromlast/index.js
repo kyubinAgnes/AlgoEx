@@ -14,18 +14,14 @@
 function fromLast(list, n) {
   let slow = list.getFirst();
   let fast = list.getFirst();
-  let count = 0;
-  while (count < n) {
+  while (n > 0) {
     fast = fast.next;
-    count++;
+    n--;
   }
 
   while (fast.next) {
     slow = slow.next;
     fast = fast.next;
-    if (fast.next === null) {
-      return slow;
-    }
   }
   return slow;
 }
