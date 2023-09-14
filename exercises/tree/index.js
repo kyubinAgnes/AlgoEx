@@ -43,7 +43,7 @@ class Tree {
   }
 
   traverseDF(fn) {
-    let arr = [this.root];
+    const arr = [this.root];
 
     while (arr.length) {
       const node = arr.shift();
