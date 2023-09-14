@@ -47,7 +47,7 @@ class Tree {
 
     while (arr.length) {
       const node = arr.shift();
-      arr = [...node.children, ...arr];
+      arr.unshift(...node.children);
       fn(node);
     }
   }
