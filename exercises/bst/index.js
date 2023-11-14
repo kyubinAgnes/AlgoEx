@@ -29,6 +29,34 @@ class Node {
             this.right = new Node(data);
         }
     }
+
+    // contains(data) {
+    //     if(this.data === data) {
+    //         return true;
+    //     } else if(data < this.data) {
+    //         this.data = this.left;
+    //     } else if (data > this.data) {
+    //         this.data = this.left;
+    //     } else if (!this.left || !this.right) {
+    //         return false
+    //     } else {
+    //         return false
+    //     }
+    // }
+
+    contains(data) {
+        if (this.data === data) {
+            return this;
+        }
+
+        if(this.data < data && this.right) {
+            return this.right.contains(data);
+        } else if (this.data > data && this.left) {
+            return this.left.contains(data);
+        }
+
+        return null
+    }
 }
 
 module.exports = Node;
